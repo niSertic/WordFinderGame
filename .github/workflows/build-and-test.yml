@@ -18,9 +18,9 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    - name: Build solution
+    - name: Build solution (Release | x64)
       run: |
-        msbuild WordFinderGame.sln /p:Configuration=Debug /p:Platform=x64
+        msbuild WordFinderGame.sln /p:Configuration=Release /p:Platform=x64
 
     - name: Setup VSTest
       uses: darenm/Setup-VSTest@v1
