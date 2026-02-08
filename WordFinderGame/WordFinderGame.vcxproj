@@ -126,10 +126,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="LetterSetGenerator.h" />
+    <ClInclude Include="WordValidator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="LetterSetGenerator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WordValidator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\popular.txt" />
