@@ -21,14 +21,17 @@
   <ItemGroup>
     <ClCompile Include="..\WordFinderGame\Dictionary.cpp" />
     <ClCompile Include="..\WordFinderGame\LetterSetGenerator.cpp" />
+    <ClCompile Include="..\WordFinderGame\ScoreCalculator.cpp" />
     <ClCompile Include="..\WordFinderGame\WordValidator.cpp" />
     <ClCompile Include="DictionaryTests.cpp" />
     <ClCompile Include="LetterSetGeneratorTests.cpp" />
+    <ClCompile Include="ScoreCalculatorTests.cpp" />
     <ClCompile Include="WordValidatorTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WordFinderGame\Dictionary.h" />
     <ClInclude Include="..\WordFinderGame\LetterSetGenerator.h" />
+    <ClInclude Include="..\WordFinderGame\ScoreCalculator.h" />
     <ClInclude Include="..\WordFinderGame\WordValidator.h" />
   </ItemGroup>
   <ItemGroup>

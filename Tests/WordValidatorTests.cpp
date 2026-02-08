@@ -7,7 +7,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace WordFinderGame;
 
-namespace WordValidatorTests
+namespace WordFinderGameTests
 {
 
     TEST_CLASS(WordValidatorTests)

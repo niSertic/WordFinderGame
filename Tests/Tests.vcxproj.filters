@@ -36,6 +36,12 @@
     <ClCompile Include="..\WordFinderGame\WordValidator.cpp">
       <Filter>Source Files\WordFinderGame</Filter>
     </ClCompile>
+    <ClCompile Include="ScoreCalculatorTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WordFinderGame\ScoreCalculator.cpp">
+      <Filter>Source Files\WordFinderGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WordFinderGame\Dictionary.h">
@@ -45,6 +51,9 @@
       <Filter>Source Files\WordFinderGame</Filter>
     </ClInclude>
     <ClInclude Include="..\WordFinderGame\WordValidator.h">
+      <Filter>Source Files\WordFinderGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WordFinderGame\ScoreCalculator.h">
       <Filter>Source Files\WordFinderGame</Filter>
     </ClInclude>
   </ItemGroup>
