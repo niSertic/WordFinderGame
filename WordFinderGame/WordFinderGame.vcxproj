@@ -126,12 +126,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="LetterSetGenerator.h" />
     <ClInclude Include="ScoreCalculator.h" />
     <ClInclude Include="WordValidator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="LetterSetGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ScoreCalculator.cpp" />
