@@ -48,6 +48,12 @@
     <ClCompile Include="..\WordFinderGame\GameState.cpp">
       <Filter>Source Files\WordFinderGame</Filter>
     </ClCompile>
+    <ClCompile Include="HighScoreManagerTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WordFinderGame\HighScoreManager.cpp">
+      <Filter>Source Files\WordFinderGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WordFinderGame\Dictionary.h">
@@ -63,6 +69,9 @@
       <Filter>Source Files\WordFinderGame</Filter>
     </ClInclude>
     <ClInclude Include="..\WordFinderGame\GameState.h">
+      <Filter>Source Files\WordFinderGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WordFinderGame\HighScoreManager.h">
       <Filter>Source Files\WordFinderGame</Filter>
     </ClInclude>
   </ItemGroup>

@@ -126,21 +126,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Dictionary.h" />
+    <ClInclude Include="GameConfig.h" />
+    <ClInclude Include="GameController.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="HighScoreManager.h" />
     <ClInclude Include="LetterSetGenerator.h" />
     <ClInclude Include="ScoreCalculator.h" />
     <ClInclude Include="WordValidator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dictionary.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="HighScoreManager.cpp" />
     <ClCompile Include="LetterSetGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ScoreCalculator.cpp" />
     <ClCompile Include="WordValidator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\popular.txt" />
+    <Text Include="dictionary.txt" />
+    <Text Include="highscores.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

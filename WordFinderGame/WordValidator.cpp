@@ -8,6 +8,7 @@
 
 namespace WordFinderGame
 {
+
     WordValidationResult WordValidator::Validate(
         const std::string& word,
         const std::string& availableLetters,

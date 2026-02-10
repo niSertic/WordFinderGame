@@ -6,7 +6,7 @@
 
 namespace WordFinderGame
 {
-    class Dictionary;
+	class Dictionary;
 
     enum class WordValidationResult
     {

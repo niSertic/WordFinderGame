@@ -33,6 +33,15 @@
     <ClInclude Include="GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HighScoreManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Dictionary.cpp">
@@ -53,10 +62,19 @@
     <ClCompile Include="GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HighScoreManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\popular.txt">
-      <Filter>Data</Filter>
+    <Text Include="dictionary.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="highscores.txt">
+      <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
 </Project>

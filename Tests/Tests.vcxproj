@@ -21,11 +21,13 @@
   <ItemGroup>
     <ClCompile Include="..\WordFinderGame\Dictionary.cpp" />
     <ClCompile Include="..\WordFinderGame\GameState.cpp" />
+    <ClCompile Include="..\WordFinderGame\HighScoreManager.cpp" />
     <ClCompile Include="..\WordFinderGame\LetterSetGenerator.cpp" />
     <ClCompile Include="..\WordFinderGame\ScoreCalculator.cpp" />
     <ClCompile Include="..\WordFinderGame\WordValidator.cpp" />
     <ClCompile Include="DictionaryTests.cpp" />
     <ClCompile Include="GameStateTests.cpp" />
+    <ClCompile Include="HighScoreManagerTests.cpp" />
     <ClCompile Include="LetterSetGeneratorTests.cpp" />
     <ClCompile Include="ScoreCalculatorTests.cpp" />
     <ClCompile Include="WordValidatorTests.cpp" />
@@ -33,6 +35,7 @@
   <ItemGroup>
     <ClInclude Include="..\WordFinderGame\Dictionary.h" />
     <ClInclude Include="..\WordFinderGame\GameState.h" />
+    <ClInclude Include="..\WordFinderGame\HighScoreManager.h" />
     <ClInclude Include="..\WordFinderGame\LetterSetGenerator.h" />
     <ClInclude Include="..\WordFinderGame\ScoreCalculator.h" />
     <ClInclude Include="..\WordFinderGame\WordValidator.h" />
