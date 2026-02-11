@@ -93,5 +93,56 @@ namespace WordFinderGameTests
 
             Assert::IsFalse(hasCharlie);
         }
+
+        TEST_METHOD(QualifiesForHighScore_ReturnsTrue_WhenTableNotFull)
+        {
+            const std::string filePath = "test_highscores_qualifies1.txt";
+            DeleteFileIfExists(filePath);
+
+            HighScoreManager manager(filePath, 5);
+
+            std::vector<HighScoreEntry> initial{
+                { "Alice", 300, "2026-02-08 10:00" }
+            };
+
+            manager.Save(initial);
+
+            Assert::IsTrue(manager.QualifiesForHighScore(100));
+        }
+
+        TEST_METHOD(QualifiesForHighScore_ReturnsTrue_WhenScoreHigherThanExisting)
+        {
+            const std::string filePath = "test_highscores_qualifies2.txt";
+            DeleteFileIfExists(filePath);
+
+            HighScoreManager manager(filePath, 2);
+
+            std::vector<HighScoreEntry> initial{
+                { "Alice", 300, "2026-02-08 10:00" },
+                { "Bob",   200, "2026-02-08 10:05" }
+            };
+
+            manager.Save(initial);
+
+            Assert::IsTrue(manager.QualifiesForHighScore(250));
+        }
+
+        TEST_METHOD(QualifiesForHighScore_ReturnsFalse_WhenScoreTooLow)
+        {
+            const std::string filePath = "test_highscores_qualifies3.txt";
+            DeleteFileIfExists(filePath);
+
+            HighScoreManager manager(filePath, 2);
+
+            std::vector<HighScoreEntry> initial{
+                { "Alice", 300, "2026-02-08 10:00" },
+                { "Bob",   200, "2026-02-08 10:05" }
+            };
+
+            manager.Save(initial);
+
+            Assert::IsFalse(manager.QualifiesForHighScore(150));
+        }
+
     };
 }

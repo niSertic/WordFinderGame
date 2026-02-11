@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <format>
+#include <chrono>
 
 namespace WordFinderGame
 {
@@ -89,10 +91,32 @@ namespace WordFinderGame
         return scores;
     }
 
+    bool HighScoreManager::QualifiesForHighScore(int score) const
+    {
+        auto scores = Load();
+
+        if (scores.size() < m_maxEntries)
+            return true;
+
+        return std::any_of(scores.begin(), scores.end(),
+            [score](const HighScoreEntry& e)
+            {
+                return score > e.score;
+            });
+    }
+
     bool HighScoreManager::CompareByScore(
         const HighScoreEntry& a,
         const HighScoreEntry& b)
     {
         return a.score > b.score;
+    }
+
+    std::string HighScoreManager::CreateTimestamp()
+    {
+        return std::format("{:%Y-%m-%d %H:%M}",
+            std::chrono::zoned_time(
+                std::chrono::current_zone(),
+                std::chrono::system_clock::now()));
     }
 }

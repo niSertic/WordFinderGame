@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleUI.h" />
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="GameConfig.h" />
     <ClInclude Include="GameController.h" />
@@ -135,6 +136,7 @@
     <ClInclude Include="WordValidator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleUI.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="GameState.cpp" />
