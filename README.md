@@ -69,6 +69,21 @@ Open the solution in Visual Studio
 
   - The maximum number of attempts is reached
     
+- Scoring system
+
+  - Points are awarded based on word length
+
+    - 3 letters = 10 pts
+    - 4 letters = 20 pts
+    - 5 letters = 30 pts
+    - 6 letters = 40 pts
+    - 7 letters = 50 pts
+    - 8+ letters = 60 pts
+      
+  - Bonus
+
+    - An additional +50 points is awarded if a word uses all available letters.
+    
 ## Technologies Used
 
 - C++
