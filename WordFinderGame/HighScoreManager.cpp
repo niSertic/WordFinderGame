@@ -114,7 +114,7 @@ namespace WordFinderGame
 
     std::string HighScoreManager::CreateTimestamp()
     {
-        return std::format("{:%Y-%m-%d %H:%M}",
+        return std::format("{:%d.%m.%Y %H:%M}",
             std::chrono::zoned_time(
                 std::chrono::current_zone(),
                 std::chrono::system_clock::now()));

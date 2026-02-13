@@ -33,6 +33,9 @@ namespace WordFinderGame
             << "\nCOMMANDS:\n"
             << "\t- Type /quit and press Enter to exit the game\n"
             << "\t- Press Enter on empty line to refresh 'Time left'\n"
+            << "\SCORING:\n"
+            << "\t- 3-7 letters: 10-50 pts | 8+ letters: 60 pts\n"
+            << "\t- +50 bonus if all letters are used\n"
             << "\nYou have " << GameConfig::TimeLimitSeconds
             << " seconds and " << GameConfig::MaxAttempts
             << " attempts.\n";
