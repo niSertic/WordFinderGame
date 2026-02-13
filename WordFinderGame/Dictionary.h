@@ -15,7 +15,6 @@ namespace WordFinderGame
         static bool IsValidWord(const std::string& word);
 
     public:
-        Dictionary() = default;
 
         bool LoadFromFile(const std::string& filePath);
 

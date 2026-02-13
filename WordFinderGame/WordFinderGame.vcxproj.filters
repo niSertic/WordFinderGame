@@ -79,8 +79,5 @@
     <Text Include="dictionary.txt">
       <Filter>Source Files</Filter>
     </Text>
-    <Text Include="highscores.txt">
-      <Filter>Source Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
