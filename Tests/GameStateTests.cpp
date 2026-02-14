@@ -1,7 +1,6 @@
 #include "CppUnitTest.h"
 #include "../WordFinderGame/GameState.h"
 
-#include <thread>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace WordFinderGame;
@@ -19,8 +18,8 @@ namespace WordFinderGameTests
 
             Assert::AreEqual(std::string("abcdefghi"), state.GetAvailableLetters());
             Assert::AreEqual(0, state.GetScore());
-            Assert::AreEqual(static_cast<size_t>(0), state.GetAttemptsUsed());
-            Assert::AreEqual(static_cast<size_t>(10), state.GetAttemptsRemaining());
+            Assert::AreEqual(0ull, state.GetAttemptsUsed());
+            Assert::AreEqual(10ull, state.GetAttemptsRemaining());
             Assert::IsFalse(state.IsGameOver());
         }
 
@@ -41,8 +40,8 @@ namespace WordFinderGameTests
             state.IncrementAttempts();
             state.IncrementAttempts();
 
-            Assert::AreEqual(static_cast<size_t>(2), state.GetAttemptsUsed());
-            Assert::AreEqual(static_cast<size_t>(3), state.GetAttemptsRemaining());
+            Assert::AreEqual(2ull, state.GetAttemptsUsed());
+            Assert::AreEqual(3ull, state.GetAttemptsRemaining());
         }
 
         TEST_METHOD(IsGameOver_ReturnsTrue_WhenAttemptsExceeded)
@@ -58,9 +57,13 @@ namespace WordFinderGameTests
 
         TEST_METHOD(IsGameOver_ReturnsTrue_WhenTimeIsUp)
         {
-            GameState state("abcdefghi", 10, std::chrono::seconds(1));
+            using clock = std::chrono::steady_clock;
 
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            auto fakeNow = clock::now();
+
+            GameState state("abcdefghi", 10, std::chrono::seconds(1), [&fakeNow]() { return fakeNow; });
+
+            fakeNow += std::chrono::seconds(2);
 
             Assert::IsTrue(state.IsTimeUp());
             Assert::IsTrue(state.IsGameOver());
@@ -68,13 +71,17 @@ namespace WordFinderGameTests
 
         TEST_METHOD(GetTimeRemaining_NeverReturnsNegative)
         {
-            GameState state("abcdefghi", 10, std::chrono::seconds(1));
+            using clock = std::chrono::steady_clock;
 
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            auto fakeNow = clock::now();
+
+            GameState state("abcdefghi", 10, std::chrono::seconds(1), [&fakeNow]() { return fakeNow; });
+
+            fakeNow += std::chrono::seconds(5);
 
             auto remaining = state.GetTimeRemaining();
 
-            Assert::IsTrue(remaining.count() >= 0);
+            Assert::AreEqual(0ll, remaining.count());
         }
     };
 }

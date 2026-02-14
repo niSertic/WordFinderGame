@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_set>
 #include <chrono>
+#include <functional>
 
 namespace WordFinderGame
 {
@@ -16,9 +17,16 @@ namespace WordFinderGame
         size_t m_maxAttempts;
         std::chrono::seconds m_timeLimit;
         std::chrono::steady_clock::time_point m_startTime;
+        std::function<std::chrono::steady_clock::time_point()> m_now;
+
 
     public:
-        GameState(std::string availableLetters, size_t maxAttempts, std::chrono::seconds timeLimit);
+        GameState(
+            std::string availableLetters, 
+            size_t maxAttempts, 
+            std::chrono::seconds timeLimit,
+            std::function<std::chrono::steady_clock::time_point()> nowFunc =
+            [] { return std::chrono::steady_clock::now(); });
 
         const std::string& GetAvailableLetters() const;
         const std::unordered_set<std::string>& GetFoundWords() const;

@@ -6,10 +6,15 @@
 namespace WordFinderGame
 {
 
-    GameState::GameState(std::string availableLetters, size_t maxAttempts, std::chrono::seconds timeLimit)
+    GameState::GameState(
+        std::string availableLetters, 
+        size_t maxAttempts, 
+        std::chrono::seconds timeLimit,
+        std::function<std::chrono::steady_clock::time_point()> nowFunc)
         : m_availableLetters(std::move(availableLetters))
         , m_maxAttempts(maxAttempts)
         , m_timeLimit(timeLimit)
+		, m_now(std::move(nowFunc))
         , m_startTime(std::chrono::steady_clock::now())
     {
     }
@@ -41,7 +46,7 @@ namespace WordFinderGame
 
     std::chrono::seconds GameState::GetTimeRemaining() const
     {
-        const auto elapsed = duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - m_startTime);
+        const auto elapsed = duration_cast<std::chrono::seconds>(m_now() - m_startTime);
 
         if (elapsed >= m_timeLimit)
         {
