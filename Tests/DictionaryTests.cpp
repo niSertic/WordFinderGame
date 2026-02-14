@@ -9,6 +9,30 @@ namespace WordFinderGameTests
 
     TEST_CLASS(DictionaryTests)
     {
+    private:
+
+        Dictionary CreateDictionary()
+        {
+            std::stringstream ss;
+
+            ss << "apple\n"
+                << "banana\n"
+                << "dog\n"
+                << "cat\n"
+                << "tree\n"
+                << "world\n"
+                << "football\n"
+                << "at\n"              
+                << "hi\n"              
+                << "it's\n"            
+                << "mother-in-law\n"   
+                << "123\n"            
+                << "hello!\n";       
+
+            Dictionary dict;
+            dict.Load(ss);
+            return dict;
+        }
     public:
 
         TEST_METHOD(LoadFromFile_ReturnsFalse_WhenFileDoesNotExist)
@@ -23,12 +47,7 @@ namespace WordFinderGameTests
 
         TEST_METHOD(LoadFromFile_LoadsValidWordsOnly)
         {
-            Dictionary dict;
-
-            bool result = dict.LoadFromFile("test_dictionary.txt");
-
-            Assert::IsTrue(result);
-
+            Dictionary dict = CreateDictionary();
 
             Assert::IsTrue(dict.Contains("apple"));
             Assert::IsTrue(dict.Contains("banana"));
@@ -37,7 +56,6 @@ namespace WordFinderGameTests
             Assert::IsTrue(dict.Contains("tree"));
             Assert::IsTrue(dict.Contains("world"));
             Assert::IsTrue(dict.Contains("football"));
-
 
             Assert::IsFalse(dict.Contains("at"));
             Assert::IsFalse(dict.Contains("hi"));
@@ -49,8 +67,11 @@ namespace WordFinderGameTests
 
         TEST_METHOD(Dictionary_NormalizesToLowercase)
         {
+            std::stringstream ss;
+            ss << "Apple\n";
+
             Dictionary dict;
-            dict.LoadFromFile("test_dictionary.txt");
+            dict.Load(ss);
 
             Assert::IsTrue(dict.Contains("apple"));
             Assert::IsFalse(dict.Contains("Apple"));
@@ -58,21 +79,18 @@ namespace WordFinderGameTests
 
         TEST_METHOD(Size_ReturnsCorrectNumberOfWords)
         {
-            Dictionary dict;
-            dict.LoadFromFile("test_dictionary.txt");
+            Dictionary dict = CreateDictionary();
 
-
-            Assert::AreEqual(static_cast<size_t>(7), dict.Size());
+            Assert::AreEqual(7ull, dict.Size());
         }
 
         TEST_METHOD(Clear_RemovesAllWords)
         {
-            Dictionary dict;
-            dict.LoadFromFile("test_dictionary.txt");
+            Dictionary dict = CreateDictionary();
 
             dict.Clear();
 
-            Assert::AreEqual(static_cast<size_t>(0), dict.Size());
+            Assert::AreEqual(0ull, dict.Size());
             Assert::IsFalse(dict.Contains("apple"));
         }
     };

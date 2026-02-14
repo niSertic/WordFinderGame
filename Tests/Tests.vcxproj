@@ -32,12 +32,6 @@
     <ClInclude Include="..\WordFinderGame\ScoreCalculator.h" />
     <ClInclude Include="..\WordFinderGame\WordValidator.h" />
   </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="test_dictionary.txt">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
-    </CopyFileToFolders>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{325ECB3A-23DB-C347-4BB0-D4DBF98485C4}</ProjectGuid>

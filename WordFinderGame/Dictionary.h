@@ -18,6 +18,8 @@ namespace WordFinderGame
 
         bool LoadFromFile(const std::string& filePath);
 
+        bool Load(std::istream& input);
+
         bool Contains(const std::string& word) const;
 
         size_t Size() const;

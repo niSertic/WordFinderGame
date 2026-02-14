@@ -14,10 +14,15 @@ namespace WordFinderGame
             return false;
         }
 
+        return Load(file);
+    }
+
+    bool Dictionary::Load(std::istream& input)
+    {
         m_words.clear();
 
         std::string line;
-        while (std::getline(file, line))
+        while (std::getline(input, line))
         {
             const std::string normalized = NormalizeWord(line);
 
@@ -27,7 +32,7 @@ namespace WordFinderGame
             }
         }
 
-        return true;
+        return !m_words.empty();
     }
 
     bool Dictionary::Contains(const std::string& word) const

@@ -32,9 +32,9 @@ namespace WordFinderGame
             return WordValidationResult::InvalidCharacters;
         }
 
-        if (!dictionary.Contains(normalized))
+        if (!CanBeFormedFromLetters(normalized, availableLetters))
         {
-            return WordValidationResult::NotInDictionary;
+            return WordValidationResult::CannotBeFormedFromLetters;
         }
 
         if (usedWords.contains(normalized))
@@ -42,9 +42,9 @@ namespace WordFinderGame
             return WordValidationResult::AlreadyUsed;
         }
 
-        if (!CanBeFormedFromLetters(normalized, availableLetters))
+        if (!dictionary.Contains(normalized))
         {
-            return WordValidationResult::CannotBeFormedFromLetters;
+            return WordValidationResult::NotInDictionary;
         }
 
         return WordValidationResult::Valid;

@@ -15,8 +15,13 @@ namespace WordFinderGameTests
     private:
         Dictionary CreateDictionary()
         {
+            std::stringstream ss;
+            ss << "apple\n"
+                << "banana\n"
+                << "orange\n";
+
             Dictionary dict;
-            dict.LoadFromFile("test_dictionary.txt");
+            dict.Load(ss);
             return dict;
         }
 
@@ -54,7 +59,7 @@ namespace WordFinderGameTests
             Dictionary dict = CreateDictionary();
 
             std::unordered_set<std::string> usedWords;
-            std::string letters = "abcdefgh";
+            std::string letters = "unknownxyz";
 
             auto result = validator.Validate("unknown", letters, usedWords, dict);
 

@@ -75,9 +75,4 @@
       <Filter>Source Files\WordFinderGame</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <CopyFileToFolders Include="test_dictionary.txt">
-      <Filter>Source Files</Filter>
-    </CopyFileToFolders>
-  </ItemGroup>
 </Project>
