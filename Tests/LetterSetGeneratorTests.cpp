@@ -27,29 +27,38 @@ namespace WordFinderGameTests
         {
             LetterSetGenerator generator(42);
 
-            const size_t letterCount = 9;
-            std::string letters = generator.Generate(letterCount);
+            const size_t sizes[] = { 5, 7, 9, 12 };
 
-            Assert::AreEqual(letterCount, letters.size());
+            for (size_t size : sizes)
+            {
+                std::string letters = generator.Generate(size);
+                Assert::AreEqual(size, letters.size());
+            }
         }
 
         TEST_METHOD(Generate_ContainsMinimumNumberOfVowels)
         {
             LetterSetGenerator generator(42);
 
-            const size_t letterCount = 9;
-            std::string letters = generator.Generate(letterCount);
+            const size_t letterCount1 = 9;
+            const size_t letterCount2 = 5;
+            std::string letters1 = generator.Generate(letterCount1);
+            std::string letters2 = generator.Generate(letterCount2);
 
-            const size_t vowelCount = CountVowels(letters);
+            const size_t vowelCount1 = CountVowels(letters1);
+            const size_t vowelCount2 = CountVowels(letters2);
 
-            Assert::IsTrue(vowelCount >= 3);
+            Assert::IsTrue(vowelCount1 >= 3);
+            Assert::IsTrue(vowelCount2 >= 2);
+            Assert::IsFalse(vowelCount2 >= 3);
+            
         }
 
         TEST_METHOD(Generate_ContainsOnlyLowercaseLetters)
         {
             LetterSetGenerator generator(42);
 
-            std::string letters = generator.Generate(9);
+            std::string letters = generator.Generate(15);
 
             bool allLowercase = std::all_of(
                 letters.begin(),
@@ -69,8 +78,11 @@ namespace WordFinderGameTests
 
             std::string letters1 = gen1.Generate(9);
             std::string letters2 = gen2.Generate(9);
+            std::string letters3 = gen1.Generate(7);
+            std::string letters4 = gen2.Generate(7);
 
             Assert::AreEqual(letters1, letters2);
+            Assert::AreEqual(letters3, letters4);
         }
 
         TEST_METHOD(Generate_DifferentSeeds_DifferentLetters)
