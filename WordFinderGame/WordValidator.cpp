@@ -61,6 +61,9 @@ namespace WordFinderGame
 
     bool WordValidator::CanBeFormedFromLetters(const std::string& word, const std::string& availableLetters)
     {
+		// Checks whether the word can be constructed from the given letters, accounting for letter frequency.
+         
+
         std::unordered_map<char, size_t> letterCounts;
 
         for (char c : availableLetters)

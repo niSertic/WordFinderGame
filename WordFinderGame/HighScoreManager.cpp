@@ -73,10 +73,8 @@ namespace WordFinderGame
     }
 
     std::vector<HighScoreEntry> HighScoreManager::AddNewScore(
-        const HighScoreEntry& entry) const
+        std::vector<HighScoreEntry>& scores, const HighScoreEntry& entry) const
     {
-        auto scores = Load();
-
         scores.push_back(entry);
 
         std::sort(scores.begin(), scores.end(), CompareByScore);
@@ -91,9 +89,10 @@ namespace WordFinderGame
         return scores;
     }
 
-    bool HighScoreManager::QualifiesForHighScore(int score) const
+    bool HighScoreManager::QualifiesForHighScore(const std::vector<HighScoreEntry>& scores, int score) const
     {
-        auto scores = Load();
+		// A score qualifies if there are fewer than max entries or if it beats at least one existing score.
+
 
         if (scores.size() < m_maxEntries)
             return true;

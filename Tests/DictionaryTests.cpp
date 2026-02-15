@@ -42,7 +42,7 @@ namespace WordFinderGameTests
             bool result = dict.LoadFromFile("non_existing_file.txt");
 
             Assert::IsFalse(result);
-            Assert::AreEqual(static_cast<size_t>(0), dict.Size());
+            Assert::AreEqual(0ull, dict.Size());
         }
 
         TEST_METHOD(LoadFromFile_LoadsValidWordsOnly)

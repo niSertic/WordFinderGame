@@ -4,6 +4,9 @@ namespace WordFinderGame
 {
     int ScoreCalculator::CalculateScore(const std::string& word, const std::string& availableLetters)
     {
+        // Calculates score based on word length.
+        // Adds a bonus if the word uses all available letters.
+
         const size_t length = word.length();
 
         int score = BaseScoreForLength(length);

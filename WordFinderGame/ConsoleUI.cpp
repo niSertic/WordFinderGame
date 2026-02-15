@@ -134,6 +134,8 @@ namespace WordFinderGame
 
     std::string ConsoleUI::FormatLetters(const std::string& letters) const
     {
+		// Formats the letters for display (uppercase with spaces).
+
         std::string formatted;
 
         for (auto it = letters.begin(); it != letters.end(); ++it)

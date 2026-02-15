@@ -16,6 +16,9 @@ namespace WordFinderGame
 
     std::string LetterSetGenerator::Generate(size_t letterCount)
     {
+        // Generates a random set of lowercase letters.
+        // Ensures a minimum number of vowels to avoid unplayable combinations.
+
         std::vector<char> letters;
         letters.reserve(letterCount);
 

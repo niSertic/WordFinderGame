@@ -27,9 +27,9 @@ namespace WordFinderGame
 
         void Save(const std::vector<HighScoreEntry>& scores) const;
 
-        std::vector<HighScoreEntry> AddNewScore(const HighScoreEntry& entry) const;
+        std::vector<HighScoreEntry> AddNewScore(std::vector<HighScoreEntry>& scores, const HighScoreEntry& entry) const;
 
-        bool QualifiesForHighScore(int score) const;
+        bool QualifiesForHighScore(const std::vector<HighScoreEntry>& scores, int score) const;
 
         static std::string CreateTimestamp();
     };

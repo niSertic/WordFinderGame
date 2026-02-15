@@ -111,10 +111,13 @@ namespace WordFinderGame
 
     void GameController::HandleHighScores(const GameState& state)
     {
+
+		// Loads existing high scores and checks if the player's score qualifies for the leaderboard.
+
         auto scores = m_highScores.Load();
 
         if (state.GetScore() > 0 &&
-            m_highScores.QualifiesForHighScore(state.GetScore()))
+            m_highScores.QualifiesForHighScore(scores, state.GetScore()))
         {
             HighScoreEntry entry{
                 m_ui.PromptForName(),
@@ -122,7 +125,7 @@ namespace WordFinderGame
                 HighScoreManager::CreateTimestamp()
             };
 
-            scores = m_highScores.AddNewScore(entry);
+            scores = m_highScores.AddNewScore(scores, entry);
         }
 
         m_ui.ShowHighScores(scores);

@@ -26,7 +26,7 @@ namespace WordFinderGameTests
 
             auto scores = manager.Load();
 
-            Assert::AreEqual(static_cast<size_t>(0), scores.size());
+            Assert::AreEqual(0ull, scores.size());
         }
 
         TEST_METHOD(SaveAndLoad_ReturnsSameEntries)
@@ -62,27 +62,27 @@ namespace WordFinderGameTests
 
             HighScoreManager manager(filePath, 3);
 
-            std::vector<HighScoreEntry> initial{
+            std::vector<HighScoreEntry> scores{
                 { "Alice",   300, "2026-02-08 10:00" },
                 { "Bob",     250, "2026-02-08 10:05" },
                 { "Charlie", 200, "2026-02-08 10:10" }
             };
            
-            manager.Save(initial);
+            manager.Save(scores);
+			auto loaded = manager.Load();   
 
             HighScoreEntry newEntry{ "Jane", 320, "2026-02-08 10:15" };
 
-            auto updated = manager.AddNewScore(newEntry);
+            manager.AddNewScore(loaded, newEntry);
 
-            Assert::AreEqual(static_cast<size_t>(3), updated.size());
+            Assert::AreEqual(3ull, loaded.size());
+            Assert::AreEqual(std::string("Jane"), loaded[0].playerName);
+            Assert::AreEqual(320, loaded[0].score);
 
-            Assert::AreEqual(std::string("Jane"), updated[0].playerName);
-            Assert::AreEqual(320, updated[0].score);
-
-            Assert::IsTrue(updated[1].score >= updated[2].score);
+            Assert::IsTrue(loaded[1].score >= loaded[2].score);
 
             bool hasCharlie = false;
-            for (const auto& entry : updated)
+            for (const auto& entry : loaded)
             {
                 if (entry.playerName == "Charlie")
                 {
@@ -101,13 +101,14 @@ namespace WordFinderGameTests
 
             HighScoreManager manager(filePath, 5);
 
-            std::vector<HighScoreEntry> initial{
+            std::vector<HighScoreEntry> scores{
                 { "Alice", 300, "2026-02-08 10:00" }
             };
 
-            manager.Save(initial);
+            manager.Save(scores);
+            auto loaded = manager.Load();
 
-            Assert::IsTrue(manager.QualifiesForHighScore(100));
+            Assert::IsTrue(manager.QualifiesForHighScore(loaded, 100));
         }
 
         TEST_METHOD(QualifiesForHighScore_ReturnsTrue_WhenScoreHigherThanExisting)
@@ -117,14 +118,15 @@ namespace WordFinderGameTests
 
             HighScoreManager manager(filePath, 2);
 
-            std::vector<HighScoreEntry> initial{
+            std::vector<HighScoreEntry> scores{
                 { "Alice", 300, "2026-02-08 10:00" },
                 { "Bob",   200, "2026-02-08 10:05" }
             };
 
-            manager.Save(initial);
+            manager.Save(scores);
+            auto loaded = manager.Load();
 
-            Assert::IsTrue(manager.QualifiesForHighScore(250));
+            Assert::IsTrue(manager.QualifiesForHighScore(loaded, 250));
         }
 
         TEST_METHOD(QualifiesForHighScore_ReturnsFalse_WhenScoreTooLow)
@@ -134,14 +136,15 @@ namespace WordFinderGameTests
 
             HighScoreManager manager(filePath, 2);
 
-            std::vector<HighScoreEntry> initial{
+            std::vector<HighScoreEntry> scores{
                 { "Alice", 300, "2026-02-08 10:00" },
                 { "Bob",   200, "2026-02-08 10:05" }
             };
 
-            manager.Save(initial);
+            manager.Save(scores);
+            auto loaded = manager.Load();
 
-            Assert::IsFalse(manager.QualifiesForHighScore(150));
+            Assert::IsFalse(manager.QualifiesForHighScore(loaded, 150));
         }
 
     };
