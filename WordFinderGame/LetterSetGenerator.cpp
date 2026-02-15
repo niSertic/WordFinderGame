@@ -19,6 +19,12 @@ namespace WordFinderGame
         // Generates a random set of lowercase letters.
         // Ensures a minimum number of vowels to avoid unplayable combinations.
 
+        static constexpr char VOWELS[] = { 'a', 'e', 'i', 'o', 'u' };
+        static constexpr char CONSONANTS[] = {
+            'b','c','d','f','g','h','j','k','l','m',
+            'n','p','q','r','s','t','v','w','x','y','z'
+        };
+
         std::vector<char> letters;
         letters.reserve(letterCount);
 
@@ -44,10 +50,5 @@ namespace WordFinderGame
         std::shuffle(letters.begin(), letters.end(), m_rng);
 
         return std::string(letters.begin(), letters.end());
-    }
-
-    bool LetterSetGenerator::IsVowel(char c)
-    {
-        return std::find(std::begin(VOWELS), std::end(VOWELS), c) != std::end(VOWELS);
     }
 }
